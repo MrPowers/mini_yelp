@@ -6,9 +6,40 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+<header class="navbar navbar-fixed-top">
+  <nav class="navbar-inner">
+    <div class="container">
+      <%= render 'layouts/navigation' %>
+    </div>
+  </nav>
+</header>
 
-<%= yield %>
+<div id="main" role="main">
+  <div class="container">
+    <div class="content">
+       <div class="row">
+        <div class="span12">
+          <% flash.each do |name, msg| %>
+					  <% if msg.is_a?(String) %>
+					  	<%# Gets alert-success or alert-error for Bootstrap %>
+					    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+					    	<%# Data dismiss &#215; is jQuery plugin to allow flashes to be closed %>
+					      <a class="close" data-dismiss="alert">&#215;</a>
+					      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+					    </div>
+					  <% end %>
+					<% end %>
 
+          <%= yield %>
+        </div>
+      </div>
+      <footer>
+      	<%= render 'layouts/footer' %>
+      </footer>
+    </div>
+  </div> <!--! end of .container -->
+</div> <!--! end of #main -->
 </body>
 </html>
