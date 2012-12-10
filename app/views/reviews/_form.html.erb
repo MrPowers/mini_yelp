@@ -1,0 +1,6 @@
+<%= form_for [@restaurant, @review] do |f| %>
+  <%= f.text_area :body, :rows => "5", :class => "input-xxlarge", :placeholder => "Enter your review here" %> <br />
+  <%= f.label :rating %>
+  <%= f.select :rating, (1..5), :selected => 3 %> <br />
+  <%= f.submit "Create review", :class => "btn btn-info" %> 
+<% end %>

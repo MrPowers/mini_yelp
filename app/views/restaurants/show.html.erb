@@ -1,3 +1,9 @@
 <%= @restaurant.name %> <br />
 <%= @restaurant.street %> <br />
-<%= @restaurant.city %>, <%= @restaurant.state %>
+<%= @restaurant.city %>, <%= @restaurant.state %> <br /> <br />
+
+<%= render 'reviews/form' %>
+
+<br /> <br />
+
+<%= render @restaurant.reviews %>

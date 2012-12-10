@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = Restaurant.create(params[:restaurant])
+		@restaurant.user_id = current_user.id
 		if @restaurant.save
 			redirect_to restaurants_path
 		else
@@ -38,5 +39,6 @@ class RestaurantsController < ApplicationController
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
+		@review = Review.new
 	end
 end
