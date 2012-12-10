@@ -1,7 +1,7 @@
 MiniYelp::Application.routes.draw do
+  resources :restaurants
   devise_for :users
-
-  root :to => "home#index"
+  root :to => "restaurants#index"
 
 
   # The priority is based upon order of creation:

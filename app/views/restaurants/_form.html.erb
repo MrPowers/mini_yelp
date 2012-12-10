@@ -1,0 +1,11 @@
+<%= form_for @restaurant do |f| %>
+	<%= f.text_field :name, :placeholder => "restaurant name" %> <br />
+
+	<%= f.text_field :street, :placeholder => "street" %><br />
+
+	<%= f.text_field :city, :placeholder => "city" %><br />
+
+	<%= f.text_field :state, :placeholder => "state" %><br />
+
+	<%= f.submit button_helper(@restaurant), :class => "btn btn-primary" %>
+<% end %>
