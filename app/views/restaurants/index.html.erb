@@ -1,7 +1,16 @@
+<div class="span4">
 <%= render @restaurants %>
 
 <% if can? :create, Restaurant %>
 	<%= link_to "Add a new restaurant", new_restaurant_path %>
 <% else %>
 	<h3>Sign up to add a new restaurant</h3>
+<% end %>
+</div>
+
+<div class="span7">
+	<div id="map_canvas"></div>
+</div>
+
+<%= content_tag "div", :id => "restaurants", :data => { :restaurants => @restaurants } do %>
 <% end %>

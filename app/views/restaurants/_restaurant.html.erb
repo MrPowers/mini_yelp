@@ -1,6 +1,7 @@
 <%= link_to restaurant.name, restaurant_path(restaurant) %> 
 
 <% if can? :update, restaurant %>
+	<br />
 	<%= link_to "Edit", edit_restaurant_path(restaurant) %>
 <% end %>
 
@@ -8,3 +9,5 @@
 	<%= link_to "Destroy", restaurant_path(restaurant), :method => :delete, :confirm => "Are you sure?"  %>
 <% end %>
 <br />
+<%= restaurant.street %> <br />
+<%= restaurant.city %>, <%= restaurant.state %> <br /> <br />

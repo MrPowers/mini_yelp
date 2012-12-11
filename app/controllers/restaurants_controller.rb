@@ -14,6 +14,10 @@ class RestaurantsController < ApplicationController
 	end
 
 	def index
+		respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
 	end
 
 	def edit

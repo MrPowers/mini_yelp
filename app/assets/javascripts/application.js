@@ -14,3 +14,50 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+	// console.log($('#restaurants').data('restaurants'));
+	Restaurants.initialize();
+	Restaurants.placeMarker();
+});//end ready
+
+var Restaurants = {
+	map: null,
+	geocoder: null,
+
+	initialize: function() {
+		Restaurants.geocoder = new google.maps.Geocoder();
+		navigator.geolocation.getCurrentPosition(Restaurants.showPosition);
+	},//end initialize
+
+	showPosition: function(position) {
+		var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var myLatlng = new google.maps.LatLng(latitude, longitude);
+    var mapOptions = {
+	    center: myLatlng,
+	    zoom: 13,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+  	};
+  	Restaurants.map = new google.maps.Map(document.getElementById("map_canvas"),
+      mapOptions);
+	},//end showPosition
+
+	placeMarker: function() {
+		var restaurants = $('#restaurants').data('restaurants');
+		$.each(restaurants, function(k, e){
+			var address = e.street + ' ' + e.city + ", " + e.state;
+		  Restaurants.geocoder.geocode( { 'address': address }, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+	        var marker = new google.maps.Marker({
+	            map: Restaurants.map,
+	            position: results[0].geometry.location
+	        });
+	      } 
+	      else {
+	        alert('Geocode was not successful for the following reason: ' + status);
+	      }
+	    });//end geocoder
+		});//end each
+	}//end placeMarker
+};//end Restaurants
