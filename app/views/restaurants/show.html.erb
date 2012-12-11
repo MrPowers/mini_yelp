@@ -1,9 +1,15 @@
-<%= @restaurant.name %> <br />
-<%= @restaurant.street %> <br />
-<%= @restaurant.city %>, <%= @restaurant.state %> <br /> <br />
+<div class="span4">
+	<%= @restaurant.name %> <br />
+	<%= @restaurant.street %> <br />
+	<%= @restaurant.city %>, <%= @restaurant.state %> <br /> <br />
+</div>
+
+<div class="span7 images">
+	<%= image_tag "rails.png" %>
+</div>
 
 <h3>Reviews</h3>
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
 	<%= render @restaurant.reviews %>
 </table>
 
