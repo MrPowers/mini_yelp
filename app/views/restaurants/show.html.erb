@@ -2,8 +2,15 @@
 <%= @restaurant.street %> <br />
 <%= @restaurant.city %>, <%= @restaurant.state %> <br /> <br />
 
-<%= render 'reviews/form' %>
+<table class="table table-bordered">
+	<%= render @restaurant.reviews %>
+</table>
 
-<br /> <br />
+<br />
 
-<%= render @restaurant.reviews %>
+<% if can? :create, Review %>
+	<h3>Add a review</h3>
+	<%= render 'reviews/form' %>
+<% else %>
+	<h3>Sign in to add a review</h3>
+<% end %>

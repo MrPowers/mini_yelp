@@ -1,2 +1,16 @@
-<%= review.user.name if review.user %><br />
-<%= review.body %><br /> <br />
+<tr>
+	<td>
+		<%= review.user.name if review.user %> 
+		
+		<% if can? :edit, review %>
+			<%= link_to "Edit", edit_restaurant_review_path(:restaurant_id => @restaurant.id, :id => review.id ) %> 
+		<% end %>
+		
+		<% if can? :destroy, review %>
+			<%= link_to "Destroy", restaurant_review_path(:restaurant_id => @restaurant.id, :id => review.id), :method => :delete %><br />
+		<% end %>
+
+		<%= review.rating %> Stars  <em><%= review.created_at.strftime("%B %e, %Y") %></em><br />
+		<%= review.body %><br /> <br />
+	</td>
+</tr>
