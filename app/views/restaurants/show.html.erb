@@ -1,5 +1,5 @@
 <div class="span4">
-	<%= @restaurant.name %> <br />
+	<strong><%= @restaurant.name %></strong> <br />
 	<%= @restaurant.street %> <br />
 	<%= @restaurant.city %>, <%= @restaurant.state %> <br /> <br />
 </div>
@@ -16,8 +16,12 @@
 <br />
 
 <% if can? :create, Review %>
-	<h3>Add a review</h3>
-	<%= render 'reviews/form' %>
+	<% if reviewed?(@restaurant) %>
+		<h3>You have already reviewed this restaurant</h3>
+	<% else %>
+		<h3>Add a review</h3>
+		<%= render 'reviews/form' %>
+	<% end %>
 <% else %>
 	<h3>Sign in to add a review</h3>
 <% end %>

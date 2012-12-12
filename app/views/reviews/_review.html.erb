@@ -1,6 +1,6 @@
 <tr>
 	<td>
-		<%= review.user.name if review.user %> 
+		<strong><%= review.user.name if review.user %></strong> <em><%= review.created_at.strftime("%B %e, %Y") %></em><br />
 		
 		<% if can? :edit, review %>
 			<%= link_to "Edit", edit_restaurant_review_path(:restaurant_id => @restaurant.id, :id => review.id ) %> 
@@ -10,7 +10,7 @@
 			<%= link_to "Destroy", restaurant_review_path(:restaurant_id => @restaurant.id, :id => review.id), :method => :delete %><br />
 		<% end %>
 
-		<%= review.rating %> Stars  <em><%= review.created_at.strftime("%B %e, %Y") %></em><br />
-		<%= review.body %><br /> <br />
+		<%= review.rating %> Stars<br />
+		<%= review.body %><br />
 	</td>
 </tr>

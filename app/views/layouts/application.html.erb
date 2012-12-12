@@ -28,7 +28,7 @@
           <% flash.each do |name, msg| %>
 					  <% if msg.is_a?(String) %>
 					  	<%# Gets alert-success or alert-error for Bootstrap %>
-					    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+					    <div class="flash alert alert-<%= name == :notice ? "success" : "error" %>">
 					    	<%# Data dismiss &#215; is jQuery plugin to allow flashes to be closed %>
 					      <a class="close" data-dismiss="alert">&#215;</a>
 					      <%= content_tag :div, msg, :id => "flash_#{name}" %>
