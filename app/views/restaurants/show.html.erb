@@ -10,25 +10,30 @@
 	<% end %>
 </div>
 
-<div class="span12"><h3>Reviews</h3></div>
-<table class="table table-bordered table-hover">
-	<%= render @restaurant.reviews %>
-</table>
+<div class="span8"><h3>Reviews</h3>
+	<table class="table table-bordered table-hover">
+		<%= render @restaurant.reviews %>
+	</table>
+</div>
 
-<% if can? :create, Review %>
-	<% if reviewed?(@restaurant) %>
-		<h4>You have already reviewed this restaurant</h4>
+<div class="span12">
+	<% if can? :create, Review %>
+		<% if reviewed?(@restaurant) %>
+			<h4>You have already reviewed this restaurant</h4>
+		<% else %>
+			<h3>Add a review</h3>
+			<br />
+			<%= render 'reviews/form' %>
+		<% end %>
 	<% else %>
-		<h3>Add a review</h3>
-		<br />
-		<%= render 'reviews/form' %>
+		<h4>Sign in to add a review</h4>
 	<% end %>
-<% else %>
-	<h4>Sign in to add a review</h4>
-<% end %>
+</div>
 
-<br />
-<% if can? :create, Photo %>
-  <h4>Add a picture</h4>
-	<%= render 'photos/form' %>
-<% end %>
+<div class="span12">
+	<br />
+	<% if can? :create, Photo %>
+	  <h4>Add a picture</h4>
+		<%= render 'photos/form' %>
+	<% end %>
+</div>
