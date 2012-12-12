@@ -1,7 +1,11 @@
 <div class="span3">
-	<strong><%= @restaurant.name %></strong> <br />
+	<strong class="rest_name"><%= @restaurant.name %></strong> <br />
 	<%= @restaurant.street %> <br />
-	<%= @restaurant.city %>, <%= @restaurant.state %> <br /> <br />
+	<%= @restaurant.city %>, <%= @restaurant.state %><br /><br />
+	<% unless @restaurant.reviews.empty? %>
+		<strong>Average Rating: <%= average_review(@restaurant) %> Stars</strong>
+	<% end %>
+	<br /> <br />
 </div>
 
 <div class="span4 images">
@@ -9,6 +13,8 @@
 		<%= render 'carousel' %>
 	<% end %>
 </div>
+
+<div class="span12"></div>
 
 <div class="span8"><h3>Reviews</h3>
 	<table class="table table-bordered table-hover">

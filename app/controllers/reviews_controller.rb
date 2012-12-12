@@ -5,11 +5,8 @@ class ReviewsController < ApplicationController
 	def create
 		@review = @restaurant.reviews.create(params[:review])
 		@review.user_id = current_user.id
-		if @review.save
-			redirect_to @restaurant
-		else
-			render "reviews/form"
-		end
+		@review.save
+	  redirect_to @restaurant
 	end
 
 	def edit
