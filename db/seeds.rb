@@ -13,6 +13,9 @@ foobar = User.create(
 	:name => "foobar"  
 )
 
+foobar.role = "admin"
+foobar.save
+
 bob = User.create(
 	:email => "bob@example.com",
 	:password => "foobar",
@@ -43,6 +46,22 @@ restaurant2 = Restaurant.create(
 	:user_id => foobar.id    
 )
 
+restaurant3 = Restaurant.create(
+	:name => "Caramba",
+	:street => "2nd and Market",
+	:city => "San Francisco",
+	:state => "CA",
+	:user_id => bob.id    
+)
+
+restaurant4 = Restaurant.create(
+	:name => "Gary Danko",
+	:street => "800 N Point Street",
+	:city => "San Francisco",
+	:state => "CA",
+	:user_id => bob.id    
+)
+
 rating1 = Review.create(
 	:body => "I love home cooking",
 	:restaurant_id => restaurant1.id,
@@ -62,4 +81,11 @@ rating3 = Review.create(
 	:restaurant_id => restaurant1.id,
 	:user_id => bill.id,
 	:rating => 2  
+)
+
+rating4 = Review.create(
+	:body => "I usually eat in front of the computer here",
+	:restaurant_id => restaurant2.id,
+	:user_id => foobar.id,
+	:rating => 4  
 )

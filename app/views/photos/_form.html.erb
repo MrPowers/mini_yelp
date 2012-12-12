@@ -1,0 +1,4 @@
+<%= form_for [@restaurant, @photo], :html => {:multipart => true} do |f| %>
+	<%= f.file_field :image %> <br />
+	<%= f.submit "Add picture", :class => "btn btn-info" %>
+<% end %>

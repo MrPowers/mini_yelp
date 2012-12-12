@@ -6,7 +6,7 @@ class Ability
       can :read, :all
     elsif user.role == "author"
       can :read, :all
-      can :create, [Restaurant, Review]
+      can :create, [Restaurant, Review, Photo]
       can :update, Restaurant do |restaurant|
         restaurant && restaurant.user == user
       end

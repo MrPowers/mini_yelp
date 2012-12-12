@@ -1,0 +1,20 @@
+<div id="myCarousel" class="carousel slide" data-interval="10000">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+  	<div class="active item picture">
+        <% unless @restaurant.photos.empty? %>
+          <%= image_tag @restaurant.photos.first.image_url.to_s %>
+        <% end %>
+    </div>
+    <% unless @restaurant.photos[1..-1].nil? %>
+  	  <% @restaurant.photos[1..-1].each do |photo| %>
+  			<div class="item picture">
+          <%= image_tag photo.image_url.to_s %>
+        </div>
+  		<% end %>
+    <% end %>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>

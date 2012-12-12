@@ -18,7 +18,7 @@
 
 $(document).ready(function(){
 	// console.log($('#restaurants').data('restaurants'));
-	$('.flash').fadeOut(3000);
+	$('.flash').fadeOut(5000);
 	Restaurants.initialize();
 	Restaurants.placeMarker();
 });//end ready

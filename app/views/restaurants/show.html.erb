@@ -1,27 +1,34 @@
-<div class="span4">
+<div class="span3">
 	<strong><%= @restaurant.name %></strong> <br />
 	<%= @restaurant.street %> <br />
 	<%= @restaurant.city %>, <%= @restaurant.state %> <br /> <br />
 </div>
 
-<div class="span7 images">
-	<%= image_tag "rails.png" %>
+<div class="span4 images">
+	<% unless @restaurant.photos.empty? %>
+		<%= render 'carousel' %>
+	<% end %>
 </div>
 
-<h3>Reviews</h3>
+<div class="span12"><h3>Reviews</h3></div>
 <table class="table table-bordered table-hover">
 	<%= render @restaurant.reviews %>
 </table>
 
-<br />
-
 <% if can? :create, Review %>
 	<% if reviewed?(@restaurant) %>
-		<h3>You have already reviewed this restaurant</h3>
+		<h4>You have already reviewed this restaurant</h4>
 	<% else %>
 		<h3>Add a review</h3>
+		<br />
 		<%= render 'reviews/form' %>
 	<% end %>
 <% else %>
-	<h3>Sign in to add a review</h3>
+	<h4>Sign in to add a review</h4>
+<% end %>
+
+<br />
+<% if can? :create, Photo %>
+  <h4>Add a picture</h4>
+	<%= render 'photos/form' %>
 <% end %>
